@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12.3  # Specify your Python version
+    commands:
+      - echo "Installing dependencies..."
+      - pip3 install -r requirements.txt  # Install Python dependencies
+  pre_build:
+    commands:
+      - echo "Running tests..."
+      - python -m unittest discover  # Run tests (adjust as needed)
+  build:
+    commands:
+      - echo "Building the application..."
+      - mkdir output  # Create an output directory
+      - cp -r . output/  # Copy your application to the output directory
+artifacts:
+  files:
+    - output/**/*  # Specify the artifacts to be uploaded
+
